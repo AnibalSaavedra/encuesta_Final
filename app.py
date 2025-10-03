@@ -51,7 +51,8 @@ if not st.session_state["consent"]:
     acepto = st.checkbox("He leído y **acepto** los términos, condiciones y consentimiento.")
     if st.button("Acepto y continuar", type="primary", disabled=not acepto):
         st.session_state["consent"] = True
-        st.experimental_rerun()
+        # FIX: Streamlit 1.32+ usa st.rerun() (experimental_rerun ya no existe)
+        st.rerun()
     st.stop()
 
 # ---------- Formulario ----------
